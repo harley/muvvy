@@ -31,7 +31,6 @@
 /* Begin PBXFileReference section */
 		3D2E8CE452F8B3E4C59ECC16 /* Pods-muvvy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muvvy.release.xcconfig"; path = "Pods/Target Support Files/Pods-muvvy/Pods-muvvy.release.xcconfig"; sourceTree = "<group>"; };
 		93E765E1BFB52BDD56E8CC96 /* Pods-muvvy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muvvy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-muvvy/Pods-muvvy.debug.xcconfig"; sourceTree = "<group>"; };
-		9DCE439E1B8F159E00CA84BF /* muvvy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "muvvy-Bridging-Header.h"; sourceTree = "<group>"; };
 		9DCE43A11B8F194200CA84BF /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		9DFA705E1B8EDEF500093BEA /* muvvy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = muvvy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFA70621B8EDEF500093BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,7 +103,6 @@
 				9DFA706A1B8EDEF500093BEA /* Images.xcassets */,
 				9DFA706C1B8EDEF500093BEA /* LaunchScreen.xib */,
 				9DFA70611B8EDEF500093BEA /* Supporting Files */,
-				9DCE439E1B8F159E00CA84BF /* muvvy-Bridging-Header.h */,
 			);
 			path = muvvy;
 			sourceTree = "<group>";

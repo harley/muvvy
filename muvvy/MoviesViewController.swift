@@ -10,8 +10,9 @@ import UIKit
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var tableView: UITableView!
     var movies: [NSDictionary]?
+    
+    @IBOutlet weak var moviesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +26,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary
                 if let json = json {
                     self.movies = json["movies"] as? [NSDictionary]
-                    self.tableView.reloadData()
+                    self.moviesTableView.reloadData()
                 }
                 
                 println("loaded")
 //                println(self.movies)
             }
-        tableView.dataSource = self
-        tableView.delegate = self
+        moviesTableView.dataSource = self
+        moviesTableView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,16 +63,30 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 return 0
             }
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("deselecting")
+        moviesTableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
 
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        println("Segue!")
+        let cell = sender as! UITableViewCell
+        
+        let indexPath = moviesTableView.indexPathForCell(cell)!
+        
+        let movie = movies![indexPath.row]
+        
+        let movieDetailsViewController = segue.destinationViewController as! MovieDetailViewController
+        
+        movieDetailsViewController.movie = movie
     }
-    */
-
+    
 }
