@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class MovieDetailViewController: UIViewController {
     
@@ -28,6 +29,9 @@ class MovieDetailViewController: UIViewController {
         }
         let request = NSURLRequest(URL: NSURL(string: url)!)
         
+        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+        PKHUD.sharedHUD.show()
+        
         imageView.setImageWithURLRequest(request, placeholderImage: nil, success: { (request, response, image) -> Void in
             self.imageView.image = image
             
@@ -39,7 +43,8 @@ class MovieDetailViewController: UIViewController {
             } else {
                 print("image cached")
             }
-            
+            PKHUD.sharedHUD.hide(animated: true)
+
         }, failure: nil)
         // Do any additional setup after loading the view.
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68D49A200E23BDF9F883A394 /* Pods_muvvy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF2E7BC6394A56E59108FFC /* Pods_muvvy.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9DCE43A21B8F194200CA84BF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCE43A11B8F194200CA84BF /* MovieDetailViewController.swift */; };
 		9DFA70641B8EDEF500093BEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA70631B8EDEF500093BEA /* AppDelegate.swift */; };
 		9DFA70691B8EDEF500093BEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFA70671B8EDEF500093BEA /* Main.storyboard */; };
@@ -15,7 +16,7 @@
 		9DFA707A1B8EDEF600093BEA /* muvvyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA70791B8EDEF600093BEA /* muvvyTests.swift */; };
 		9DFA70841B8EDFC200093BEA /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA70831B8EDFC200093BEA /* MoviesViewController.swift */; };
 		9DFA708A1B8EF2C600093BEA /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA70891B8EF2C600093BEA /* MovieCell.swift */; };
-		B9E2E51D77D4AD802EE3B165 /* libPods-muvvy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6945C8D01B1BD12A034371E /* libPods-muvvy.a */; };
+		BE8A55E1C1ABC99A9A77C263 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9549DF536048CA7D2E44ACDD /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,8 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3AF2E7BC6394A56E59108FFC /* Pods_muvvy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_muvvy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D2E8CE452F8B3E4C59ECC16 /* Pods-muvvy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muvvy.release.xcconfig"; path = "Pods/Target Support Files/Pods-muvvy/Pods-muvvy.release.xcconfig"; sourceTree = "<group>"; };
 		93E765E1BFB52BDD56E8CC96 /* Pods-muvvy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muvvy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-muvvy/Pods-muvvy.debug.xcconfig"; sourceTree = "<group>"; };
+		9549DF536048CA7D2E44ACDD /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCE43A11B8F194200CA84BF /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		9DFA705E1B8EDEF500093BEA /* muvvy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = muvvy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFA70621B8EDEF500093BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,7 +46,6 @@
 		9DFA70791B8EDEF600093BEA /* muvvyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = muvvyTests.swift; sourceTree = "<group>"; };
 		9DFA70831B8EDFC200093BEA /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		9DFA70891B8EF2C600093BEA /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
-		D6945C8D01B1BD12A034371E /* libPods-muvvy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-muvvy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9E2E51D77D4AD802EE3B165 /* libPods-muvvy.a in Frameworks */,
+				BE8A55E1C1ABC99A9A77C263 /* Pods.framework in Frameworks */,
+				68D49A200E23BDF9F883A394 /* Pods_muvvy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +71,8 @@
 		65F156733820B3FAF2E5097F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D6945C8D01B1BD12A034371E /* libPods-muvvy.a */,
+				9549DF536048CA7D2E44ACDD /* Pods.framework */,
+				3AF2E7BC6394A56E59108FFC /* Pods_muvvy.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,6 +174,7 @@
 				9DFA705B1B8EDEF500093BEA /* Frameworks */,
 				9DFA705C1B8EDEF500093BEA /* Resources */,
 				4BFC61432A43D35126F17513 /* Copy Pods Resources */,
+				FA9994BCAEBC4B725303F279 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -285,6 +290,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FA9994BCAEBC4B725303F279 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-muvvy/Pods-muvvy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -432,7 +452,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "muvvy/muvvy-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -449,7 +469,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "muvvy/muvvy-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
