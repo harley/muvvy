@@ -79,12 +79,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->
             UITableViewCell {
                 var cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieCell
-                let movie = movies![indexPath.row]
+                let movie = Movie(dict: movies![indexPath.row])
                 
-                cell.titleLabel.text = movie["title"] as? String
-                cell.synopsisLabel.text = movie["synopsis"] as? String
+                cell.titleLabel.text = movie.title
+                cell.synopsisLabel.text = movie.synopsis
                 
-                let url = NSURL(string: movie.valueForKeyPath("posters.thumbnail") as! String)!
+                let url = NSURL(string: movie.thumbImageURL)!
                 cell.posterView.setImageWithURL(url)
                 
                 return cell
@@ -113,15 +113,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         println("Segue!")
-        let cell = sender as! UITableViewCell
+        let cell = sender as! MovieCell
         
         let indexPath = moviesTableView.indexPathForCell(cell)!
         
-        let movie = movies![indexPath.row]
-        
         let movieDetailsViewController = segue.destinationViewController as! MovieDetailViewController
         
-        movieDetailsViewController.movie = movie
+        movieDetailsViewController.movie = Movie(dict: movies![indexPath.row])
+        movieDetailsViewController.placeholderImage = cell.posterView.image
     }
     
 }

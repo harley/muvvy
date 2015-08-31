@@ -11,27 +11,27 @@ import PKHUD
 
 class MovieDetailViewController: UIViewController {
     
-    var movie: NSDictionary!
+    var movie: Movie!
+    var placeholderImage: UIImage?
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var synopsisLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
 
-        titleLabel.text = movie["title"] as? String
-        synopsisLabel.text = movie["synopsis"] as? String
-        var url = movie!.valueForKeyPath("posters.detailed") as! String
-        var range = url.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
-        if let range = range {
-            url = url.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
-        }
-        let request = NSURLRequest(URL: NSURL(string: url)!)
+        titleLabel.text = movie.title
+        synopsisLabel.text = movie.synopsis
         
-        PKHUD.sharedHUD.contentView = PKHUDProgressView()
-        PKHUD.sharedHUD.show()
+        // cache using thumb first
+        let request = NSURLRequest(URL: NSURL(string: movie.getHighResURL()!)!)
         
-        imageView.setImageWithURLRequest(request, placeholderImage: nil, success: { (request, response, image) -> Void in
+        // no need for HUD because we are using a low res place holder image
+//        PKHUD.sharedHUD.contentView = PKHUDProgressView()
+//        PKHUD.sharedHUD.show()
+        
+        imageView.setImageWithURLRequest(request, placeholderImage: placeholderImage, success: { (request, response, image) -> Void in
             self.imageView.image = image
             
             if (response.statusCode != 0) {
@@ -42,11 +42,10 @@ class MovieDetailViewController: UIViewController {
             } else {
                 print("image cached")
             }
-            PKHUD.sharedHUD.hide(animated: true)
-            
-//            }, failure: { (request:NSURLRequest!,response:NSHTTPURLResponse!, error:NSError!) -> Void in
-            }, failure: nil)
-        // Do any additional setup after loading the view.
+//            PKHUD.sharedHUD.hide(animated: true)
+        }, failure: nil)
+        // TODO:
+//      }, failure: { (request:NSURLRequest!,response:NSHTTPURLResponse!, error:NSError!) -> Void in
     }
 
     override func didReceiveMemoryWarning() {
