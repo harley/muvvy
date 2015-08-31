@@ -11,11 +11,10 @@ import PKHUD
 
 class MovieDetailViewController: UIViewController {
     
-    
+    var movie: NSDictionary!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var synopsisLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +43,9 @@ class MovieDetailViewController: UIViewController {
                 print("image cached")
             }
             PKHUD.sharedHUD.hide(animated: true)
-
-        }, failure: nil)
+            
+//            }, failure: { (request:NSURLRequest!,response:NSHTTPURLResponse!, error:NSError!) -> Void in
+            }, failure: nil)
         // Do any additional setup after loading the view.
     }
 
@@ -55,8 +55,6 @@ class MovieDetailViewController: UIViewController {
     }
     
 
-    
-    var movie: NSDictionary!
     /*
 
     // MARK: - Navigation
