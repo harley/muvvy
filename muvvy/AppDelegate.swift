@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var urlCache: NSURLCache?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -42,5 +43,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    // rather arbitrarily, using 4MB memory and 50MB disk but don't know what the ideal numbers should be
+    func applicationDidFinishLaunching(application: UIApplication) {
+        urlCache = NSURLCache(memoryCapacity: 4 * 1024 * 1024, diskCapacity: 50 * 1024 * 1024, diskPath: nil)
+    }
+    
+    // release cache if running low on memory
+    func applicationDidReceiveMemoryWarning(application: UIApplication) {
+        if let cache = urlCache {
+            cache.removeAllCachedResponses()
+        }
+    }
 }
 

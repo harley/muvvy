@@ -25,7 +25,7 @@ class MovieDetailViewController: UIViewController {
         synopsisLabel.text = movie.synopsis
         
         // cache using thumb first
-        let request = NSURLRequest(URL: NSURL(string: movie.getHighResURL()!)!)
+        let request = NSURLRequest(URL: NSURL(string: movie.getHighResURL()!)!, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 10)
         
         // no need for HUD because we are using a low res place holder image
 //        PKHUD.sharedHUD.contentView = PKHUDProgressView()
