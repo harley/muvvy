@@ -88,9 +88,26 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 let request = NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 10)
                 cell.posterView.setImageWithURLRequest(request, placeholderImage: nil, success: nil, failure: nil)
                 
+                let selectedBackgroundView = UIView()
+                selectedBackgroundView.backgroundColor = UIColor.orangeColor()
+                cell.selectedBackgroundView = selectedBackgroundView
                 return cell
     }
     
+    // change cell text colors when highlighting
+    func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as! MovieCell
+        cell.titleLabel.textColor = UIColor.lightTextColor()
+        cell.synopsisLabel.textColor = UIColor.lightTextColor()
+    }
+
+    // restore cell colors
+    func tableView(tableView: UITableView, didUnhighlightRowAtIndexPath indexPath: NSIndexPath) {
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as! MovieCell
+        cell.titleLabel.textColor = UIColor.blackColor()
+        cell.synopsisLabel.textColor = UIColor.blackColor()
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
             if let movies = movies {
@@ -104,8 +121,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         println("deselecting")
         moviesTableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-
-    
     
     // MARK: - Navigation
 
@@ -123,5 +138,4 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         movieDetailsViewController.movie = Movie(dict: movies![indexPath.row])
         movieDetailsViewController.placeholderImage = cell.posterView.image
     }
-    
 }
