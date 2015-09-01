@@ -10,14 +10,18 @@ import UIKit
 import AFNetworking
 import PKHUD
 
-class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
 
     var movies: [NSDictionary]?
     var refreshControl:UIRefreshControl!
+    var scopedMovies: [NSDictionary]?
+    var searching: Bool = false
+
     
     @IBOutlet weak var moviesTableView: UITableView!
     @IBOutlet weak var networkErrorLabel: UILabel!
-    
+    @IBOutlet weak var moviesSearchBar: UISearchBar!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +36,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
+
+        moviesSearchBar.delegate = self
+        moviesSearchBar.placeholder = "Enter text"
+        moviesSearchBar.showsCancelButton = true
+
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -109,12 +118,15 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        if searching {
+            return scopedMovies!.count
+        } else {
             if let movies = movies {
                 return movies.count
             } else {
                 return 0
             }
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -137,5 +149,25 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         movieDetailsViewController.movie = Movie(dict: movies![indexPath.row])
         movieDetailsViewController.placeholderImage = cell.posterView.image
+    }
+
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        moviesSearchBar.resignFirstResponder()
+    }
+
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            self.searching = true
+            scopedMovies = movies?.filter {
+                dict in
+                let movie = Movie(dict: dict)
+                let found = movie.title.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+                return found != nil
+            }
+        } else {
+            self.searching = false
+        }
+
+        moviesTableView.reloadData()
     }
 }
