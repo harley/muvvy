@@ -19,6 +19,8 @@ class MovieDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = movie.title
         // Do any additional setup after loading the view.
 
         titleLabel.text = movie.title
