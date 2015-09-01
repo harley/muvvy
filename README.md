@@ -28,7 +28,7 @@ Time spent: 15
 - [ ] When pull to refresh, don't use URL cache
 
 ### Walkthrough
-![Video Walkthrough](http://i.imgur.com/9d4fXIm.gif)
+![Video Walkthrough](muvvy.gif)
 
 Credits
 ---------

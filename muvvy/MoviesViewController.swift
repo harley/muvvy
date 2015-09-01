@@ -54,13 +54,16 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     func loadMovies(refreshing: Bool = false) {
         let url = NSURL(string: "https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json")!
-        let request = NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 10)
-        
+//        let cachedRequest = NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 10)
+        let request = NSURLRequest(URL: url)
+
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue())
             {(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+                println(response)
                 if response != nil {
                     self.networkErrorLabel.alpha = 0
-                    
+//                    self.moviesSearchBar.alpha = 1
+
                     let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary
                     if let json = json {
                         self.movies = json["movies"] as? [NSDictionary]
@@ -68,6 +71,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                     }
                 } else {
                     self.networkErrorLabel.alpha = 1
+//                    self.moviesSearchBar.alpha = 0
                 }
                 
                 if refreshing {
