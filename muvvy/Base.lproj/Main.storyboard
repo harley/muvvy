@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ypT-Dm-55P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="FYm-fF-Eea">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -72,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="636" y="621"/>
+            <point key="canvasLocation" x="1168" y="621"/>
         </scene>
         <!--Movie Detail View Controller-->
         <scene sceneID="5Rv-e3-S7R">
@@ -119,12 +119,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qu3-fG-UP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1072" y="621"/>
+            <point key="canvasLocation" x="1604" y="621"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Box-->
+        <scene sceneID="bZi-QE-hvi">
+            <objects>
+                <viewController id="JBJ-Lj-G1g" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jdp-IW-EJ7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Box" image="tomato-fresh" id="Vah-Hy-UN9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZuP-8Y-biL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="474" y="220"/>
+        </scene>
+        <!--Movies-->
         <scene sceneID="7UV-my-xi0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ypT-Dm-55P" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Movies" image="tomato-home" id="xxb-2W-dZH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RAk-Lo-n0V">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -137,9 +153,32 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDZ-Pk-87z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="734" y="621"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Kvm-rf-rMF">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="FYm-fF-Eea" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="MAa-hc-YOj">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ypT-Dm-55P" kind="relationship" relationship="viewControllers" id="KWc-Xf-WrK"/>
+                        <segue destination="JBJ-Lj-G1g" kind="relationship" relationship="viewControllers" id="9Rf-Tl-LdT"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WhV-nh-cJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="202" y="621"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tomato-fresh" width="30" height="30"/>
+        <image name="tomato-home" width="264" height="264"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
