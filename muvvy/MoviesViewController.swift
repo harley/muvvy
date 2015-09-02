@@ -12,6 +12,7 @@ import PKHUD
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
 
+    let resourceURL = "https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json"
     var movies: [NSDictionary]?
     var refreshControl:UIRefreshControl!
     var scopedMovies: [NSDictionary]?
@@ -48,21 +49,28 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         self.moviesTableView.addSubview(refreshControl)
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: UIRefreshControl
+    
     func refreshMovies(sender: AnyObject) {
         loadMovies(refreshing: true)
     }
     
     func loadMovies(refreshing: Bool = false) {
-        let url = NSURL(string: "https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json")!
-//        let cachedRequest = NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 10)
+        let url = NSURL(string: resourceURL)!
+        
+        // right now it's difficult to demo Network Error if we use cachedRequest
+        // let cachedRequest = NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 10)
         let request = NSURLRequest(URL: url)
 
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue())
             {(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-//                println(response)
                 if response != nil {
                     self.networkErrorLabel.alpha = 0
-//                    self.moviesSearchBar.alpha = 1
 
                     let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary
                     if let json = json {
@@ -71,7 +79,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                     }
                 } else {
                     self.networkErrorLabel.alpha = 1
-//                    self.moviesSearchBar.alpha = 0
                 }
                 
                 if refreshing {
@@ -83,11 +90,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 println("loaded")
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func getMovieForCell(index: Int) -> Movie {
         if searching {
@@ -96,6 +98,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             return Movie(dict: movies![index])
         }
     }
+    
+    // MARK: UITableViewDataSource
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->
             UITableViewCell {
                 var cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieCell
@@ -114,6 +119,19 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 return cell
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searching {
+            return scopedMovies!.count
+        } else {
+            if let movies = movies {
+                return movies.count
+            } else {
+                return 0
+            }
+        }
+    }
+    
+    // MARK: UITableViewDelegate
     // change cell text colors when highlighting
     func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
         var cell = tableView.cellForRowAtIndexPath(indexPath) as! MovieCell
@@ -127,21 +145,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         cell.titleLabel.textColor = UIColor.blackColor()
         cell.synopsisLabel.textColor = UIColor.blackColor()
     }
-
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searching {
-            return scopedMovies!.count
-        } else {
-            if let movies = movies {
-                return movies.count
-            } else {
-                return 0
-            }
-        }
-    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("deselecting")
         moviesTableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -158,23 +163,25 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         let movieDetailsViewController = segue.destinationViewController as! MovieDetailViewController
         
-        movieDetailsViewController.movie = Movie(dict: movies![indexPath.row])
+        movieDetailsViewController.movie = getMovieForCell(indexPath.row)
+        
         movieDetailsViewController.placeholderImage = cell.posterView.image
     }
 
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         moviesSearchBar.resignFirstResponder()
+        self.searching = false
+        self.moviesSearchBar.text = ""
+        moviesTableView.reloadData()
     }
 
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        println("text did change: \(searchText)")
         if !searchText.isEmpty {
             self.searching = true
             scopedMovies = movies?.filter {
                 dict in
                 let movie = Movie(dict: dict)
                 let found = movie.title.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
-                println(found)
                 return found != nil
             }
             
