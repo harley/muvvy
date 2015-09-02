@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		06420FE578973ADF034761C3 /* Pods_muvvyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DABA5B3872E3B269686789B9 /* Pods_muvvyTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		5F4F46E7ADD960DD11739998 /* Pods_muvvy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF2E7BC6394A56E59108FFC /* Pods_muvvy.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9D4BA8EA1B950E8D0010FCC4 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BA8E91B950E8D0010FCC4 /* Movie.swift */; };
 		9DCE43A21B8F194200CA84BF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCE43A11B8F194200CA84BF /* MovieDetailViewController.swift */; };
 		9DFA70641B8EDEF500093BEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA70631B8EDEF500093BEA /* AppDelegate.swift */; };
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F4F46E7ADD960DD11739998 /* Pods_muvvy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

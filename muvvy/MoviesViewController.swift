@@ -9,6 +9,7 @@
 import UIKit
 import AFNetworking
 import PKHUD
+import ReachabilitySwift
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
 
@@ -32,8 +33,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         PKHUD.sharedHUD.contentView = PKHUDProgressView()
         PKHUD.sharedHUD.show()
-        
-        self.networkErrorLabel.alpha = 1
 
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
@@ -41,12 +40,18 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         moviesSearchBar.delegate = self
         moviesSearchBar.placeholder = "Enter text"
         moviesSearchBar.showsCancelButton = true
-
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: "refreshMovies:", forControlEvents: UIControlEvents.ValueChanged)
         self.moviesTableView.addSubview(refreshControl)
+        
+        self.networkErrorLabel.alpha = 0
+        let reachability = Reachability.reachabilityForInternetConnection()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: ReachabilityChangedNotification, object: reachability)
+        
+        reachability.startNotifier()
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,15 +75,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue())
             {(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
                 if response != nil {
-                    self.networkErrorLabel.alpha = 0
-
                     let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary
                     if let json = json {
                         self.movies = json["movies"] as? [NSDictionary]
                         self.moviesTableView.reloadData()
                     }
-                } else {
-                    self.networkErrorLabel.alpha = 1
                 }
                 
                 if refreshing {
@@ -190,5 +191,24 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         }
 
         moviesTableView.reloadData()
+    }
+    
+    // MARK: - Reachability
+    
+    func reachabilityChanged(note: NSNotification) {
+        
+        let reachability = note.object as! Reachability
+        
+        if reachability.isReachable() {
+            self.networkErrorLabel.alpha = 0
+            if reachability.isReachableViaWiFi() {
+                println("Reachable via WiFi")
+            } else {
+                println("Reachable via Cellular")
+            }
+        } else {
+            self.networkErrorLabel.alpha = 1
+            println("Not reachable")
+        }
     }
 }

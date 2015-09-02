@@ -6,6 +6,7 @@ use_frameworks!
 def shared_pods
 	pod 'AFNetworking'
 	pod 'PKHUD', :git => "https://github.com/pkluz/PKHUD.git"
+  pod 'ReachabilitySwift', git: 'https://github.com/ashleymills/Reachability.swift'
 end
 
 target 'muvvy' do
