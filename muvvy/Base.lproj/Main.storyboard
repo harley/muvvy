@@ -34,7 +34,7 @@
                                         <rect key="frame" x="0.0" y="22" width="320" height="112"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P8L-5f-UR9" id="Cj0-FL-bfB">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="111"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="111.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Synopsis" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Ay-iN-G6j">
@@ -78,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1168" y="621"/>
+            <point key="canvasLocation" x="1100" y="621"/>
         </scene>
         <!--Movie Detail View Controller-->
         <scene sceneID="5Rv-e3-S7R">
@@ -140,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZuP-8Y-biL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="474" y="220"/>
+            <point key="canvasLocation" x="482" y="-132"/>
         </scene>
         <!--Movies-->
         <scene sceneID="7UV-my-xi0">
@@ -159,7 +159,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDZ-Pk-87z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="734" y="621"/>
+            <point key="canvasLocation" x="510" y="889"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Kvm-rf-rMF">
@@ -178,7 +178,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WhV-nh-cJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="202" y="621"/>
+            <point key="canvasLocation" x="30" y="461"/>
         </scene>
     </scenes>
     <resources>

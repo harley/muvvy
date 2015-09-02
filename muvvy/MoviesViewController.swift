@@ -59,7 +59,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue())
             {(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-                println(response)
+//                println(response)
                 if response != nil {
                     self.networkErrorLabel.alpha = 0
 //                    self.moviesSearchBar.alpha = 1
@@ -89,10 +89,17 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    func getMovieForCell(index: Int) -> Movie {
+        if searching {
+            return Movie(dict: scopedMovies![index])
+        } else {
+            return Movie(dict: movies![index])
+        }
+    }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->
             UITableViewCell {
                 var cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieCell
-                let movie = Movie(dict: movies![indexPath.row])
+                let movie = getMovieForCell(indexPath.row)
                 
                 cell.titleLabel.text = movie.title
                 cell.synopsisLabel.text = movie.synopsis
@@ -160,14 +167,17 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
+        println("text did change: \(searchText)")
+        if !searchText.isEmpty {
             self.searching = true
             scopedMovies = movies?.filter {
                 dict in
                 let movie = Movie(dict: dict)
                 let found = movie.title.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+                println(found)
                 return found != nil
             }
+            
         } else {
             self.searching = false
         }

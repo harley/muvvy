@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		68D49A200E23BDF9F883A394 /* Pods_muvvy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF2E7BC6394A56E59108FFC /* Pods_muvvy.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		06420FE578973ADF034761C3 /* Pods_muvvyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DABA5B3872E3B269686789B9 /* Pods_muvvyTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9D4BA8EA1B950E8D0010FCC4 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BA8E91B950E8D0010FCC4 /* Movie.swift */; };
 		9DCE43A21B8F194200CA84BF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCE43A11B8F194200CA84BF /* MovieDetailViewController.swift */; };
 		9DFA70641B8EDEF500093BEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA70631B8EDEF500093BEA /* AppDelegate.swift */; };
@@ -17,7 +17,6 @@
 		9DFA707A1B8EDEF600093BEA /* muvvyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA70791B8EDEF600093BEA /* muvvyTests.swift */; };
 		9DFA70841B8EDFC200093BEA /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA70831B8EDFC200093BEA /* MoviesViewController.swift */; };
 		9DFA708A1B8EF2C600093BEA /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFA70891B8EF2C600093BEA /* MovieCell.swift */; };
-		BE8A55E1C1ABC99A9A77C263 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9549DF536048CA7D2E44ACDD /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +32,7 @@
 /* Begin PBXFileReference section */
 		3AF2E7BC6394A56E59108FFC /* Pods_muvvy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_muvvy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D2E8CE452F8B3E4C59ECC16 /* Pods-muvvy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muvvy.release.xcconfig"; path = "Pods/Target Support Files/Pods-muvvy/Pods-muvvy.release.xcconfig"; sourceTree = "<group>"; };
+		7F41AA022B6C1D0BCDA5F746 /* Pods-muvvyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muvvyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-muvvyTests/Pods-muvvyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		93E765E1BFB52BDD56E8CC96 /* Pods-muvvy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muvvy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-muvvy/Pods-muvvy.debug.xcconfig"; sourceTree = "<group>"; };
 		9549DF536048CA7D2E44ACDD /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D4BA8E91B950E8D0010FCC4 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -48,6 +48,8 @@
 		9DFA70791B8EDEF600093BEA /* muvvyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = muvvyTests.swift; sourceTree = "<group>"; };
 		9DFA70831B8EDFC200093BEA /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		9DFA70891B8EF2C600093BEA /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		D2671B197704B140E9D57BE6 /* Pods-muvvyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muvvyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-muvvyTests/Pods-muvvyTests.release.xcconfig"; sourceTree = "<group>"; };
+		DABA5B3872E3B269686789B9 /* Pods_muvvyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_muvvyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +57,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE8A55E1C1ABC99A9A77C263 /* Pods.framework in Frameworks */,
-				68D49A200E23BDF9F883A394 /* Pods_muvvy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06420FE578973ADF034761C3 /* Pods_muvvyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +76,7 @@
 			children = (
 				9549DF536048CA7D2E44ACDD /* Pods.framework */,
 				3AF2E7BC6394A56E59108FFC /* Pods_muvvy.framework */,
+				DABA5B3872E3B269686789B9 /* Pods_muvvyTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -161,6 +163,8 @@
 			children = (
 				93E765E1BFB52BDD56E8CC96 /* Pods-muvvy.debug.xcconfig */,
 				3D2E8CE452F8B3E4C59ECC16 /* Pods-muvvy.release.xcconfig */,
+				7F41AA022B6C1D0BCDA5F746 /* Pods-muvvyTests.debug.xcconfig */,
+				D2671B197704B140E9D57BE6 /* Pods-muvvyTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -192,9 +196,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9DFA70801B8EDEF600093BEA /* Build configuration list for PBXNativeTarget "muvvyTests" */;
 			buildPhases = (
+				0AF171824C00A4703FBEC082 /* Check Pods Manifest.lock */,
 				9DFA706F1B8EDEF600093BEA /* Sources */,
 				9DFA70701B8EDEF600093BEA /* Frameworks */,
 				9DFA70711B8EDEF600093BEA /* Resources */,
+				403205D35E17DA81CBDD44F7 /* Embed Pods Frameworks */,
+				DC94389E2C340C3E3CBE8F8A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,6 +272,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0AF171824C00A4703FBEC082 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		403205D35E17DA81CBDD44F7 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-muvvyTests/Pods-muvvyTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4BFC61432A43D35126F17513 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -293,6 +330,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DC94389E2C340C3E3CBE8F8A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-muvvyTests/Pods-muvvyTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FA9994BCAEBC4B725303F279 /* Embed Pods Frameworks */ = {
@@ -479,6 +531,7 @@
 		};
 		9DFA70811B8EDEF600093BEA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F41AA022B6C1D0BCDA5F746 /* Pods-muvvyTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -498,6 +551,7 @@
 		};
 		9DFA70821B8EDEF600093BEA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2671B197704B140E9D57BE6 /* Pods-muvvyTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
