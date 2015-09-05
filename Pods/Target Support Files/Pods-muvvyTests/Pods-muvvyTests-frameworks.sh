@@ -53,11 +53,13 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-muvvyTests/AFNetworking.framework'
+  install_framework 'Pods-muvvyTests/FontAwesome_swift.framework'
   install_framework 'Pods-muvvyTests/PKHUD.framework'
   install_framework 'Pods-muvvyTests/ReachabilitySwift.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-muvvyTests/AFNetworking.framework'
+  install_framework 'Pods-muvvyTests/FontAwesome_swift.framework'
   install_framework 'Pods-muvvyTests/PKHUD.framework'
   install_framework 'Pods-muvvyTests/ReachabilitySwift.framework'
 fi

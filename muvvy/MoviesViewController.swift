@@ -10,6 +10,7 @@ import UIKit
 import AFNetworking
 import PKHUD
 import ReachabilitySwift
+import FontAwesome_swift
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
 
@@ -23,6 +24,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var moviesTableView: UITableView!
     @IBOutlet weak var networkErrorLabel: UILabel!
     @IBOutlet weak var moviesSearchBar: UISearchBar!
+    @IBOutlet weak var viewSwitcher: UIBarButtonItem!
+
+    @IBOutlet weak var networkStatusCancelLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +49,31 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: "refreshMovies:", forControlEvents: UIControlEvents.ValueChanged)
         self.moviesTableView.addSubview(refreshControl)
-        
-        self.networkErrorLabel.alpha = 0
+
         let reachability = Reachability.reachabilityForInternetConnection()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: ReachabilityChangedNotification, object: reachability)
-        
+
         reachability.startNotifier()
+
+        networkErrorLabel.alpha = 1
+        if reachability.isReachable() {
+            networkErrorLabel.alpha = 0
+        } else {
+            networkErrorLabel.alpha = 1
+        }
+
+        networkStatusCancelLabel.font = UIFont.fontAwesomeOfSize(12)
+        networkStatusCancelLabel.text = String.fontAwesomeIconWithName(FontAwesome.Times)
+
+        let aSelector : Selector = "closeNetworkStatus"
+        let tapGesture = UITapGestureRecognizer(target: self, action: aSelector)
+        let tap1 = UIGestureRecognizer(target: self, action: aSelector)
+        tapGesture.numberOfTapsRequired = 1
+        networkStatusCancelLabel.addGestureRecognizer(tapGesture)
+        networkStatusCancelLabel.userInteractionEnabled = true
+
+        moviesTableView.bringSubviewToFront(networkStatusCancelLabel)
     }
     
     override func didReceiveMemoryWarning() {
@@ -207,8 +229,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 println("Reachable via Cellular")
             }
         } else {
-            self.networkErrorLabel.alpha = 1
+            UIView.animateWithDuration(1.0, animations: { self.networkErrorLabel.alpha = 1})
             println("Not reachable")
         }
+    }
+
+    func closeNetworkStatus() {
+        UIView.animateWithDuration(1.0, animations: { self.networkErrorLabel.alpha = 0})
     }
 }

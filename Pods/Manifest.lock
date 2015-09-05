@@ -20,11 +20,13 @@ PODS:
   - AFNetworking/UIKit (2.6.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - FontAwesome.swift (0.5.0)
   - PKHUD (2.0.1)
   - ReachabilitySwift (1.1)
 
 DEPENDENCIES:
   - AFNetworking
+  - FontAwesome.swift
   - PKHUD (from `https://github.com/pkluz/PKHUD.git`)
   - ReachabilitySwift (from `https://github.com/ashleymills/Reachability.swift`)
 
@@ -44,6 +46,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
+  FontAwesome.swift: 0b38f996bce5478b6d3f4f41b291b7991d97c42a
   PKHUD: a35d89fd82d0aeb67f53de086b3029aea3423b74
   ReachabilitySwift: 1e53abddb01111deac0d229dabdb8bb043567b18
 

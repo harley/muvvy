@@ -7,6 +7,7 @@ def shared_pods
 	pod 'AFNetworking'
 	pod 'PKHUD', :git => "https://github.com/pkluz/PKHUD.git"
   pod 'ReachabilitySwift', git: 'https://github.com/ashleymills/Reachability.swift'
+  pod 'FontAwesome.swift'
 end
 
 target 'muvvy' do
@@ -16,4 +17,3 @@ end
 target 'muvvyTests' do
   shared_pods
 end
-
